@@ -1,0 +1,30 @@
+{
+  "name": "hide-email",
+  "version": "1.0.0",
+  "description": "Puts email in a canvas to prevent basic bots from sniffing",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npm install && gulp build",
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "canvas",
+    "text",
+    "hide",
+    "email"
+  ],
+  "author": "Justin Welenofsky",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-notify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "path": "^0.12.7"
+  }
+}
