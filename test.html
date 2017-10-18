@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .email-styles {
+      font-size: 16px;
+      font-family: arial;
+    }
+  </style>
+</head>
+<body>
+  <a href="#"><span class="email-styles h-email" data-hea="ZW1haWxAZXhhbXBsZS5jb20="></span></a><br>
+  <a href="#"><span class="email-styles h-email" data-hea="ZW1haWxAZXhhbXBsZS5jb20="></span></a><br>
+  <a href="#"><span class="email-styles h-email" data-hea="ZW1haWxAZXhhbXBsZS5jb20="></span></a><br>
+  <script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    function renderCanvas(ele) {
+      let styles = getComputedStyle(ele);
+      let fontFamily = styles.fontFamily;
+      let fontSize = styles.fontSize;
+      let canvas = document.createElement('canvas');
+      let ctx = canvas.getContext('2d');
+      let text = atob(ele.dataset.hea);
+      console.log(`${fontSize} ${fontFamily}`);
+      ctx.font = `${fontSize} ${fontFamily}`;
+      canvas.width = Math.ceil(ctx.measureText(text).width);
+      canvas.height = fontSize.match(/([0-9]+)/g)[0];
+      ctx.textBaseline = "hanging";
+      ctx.font = `${fontSize} ${fontFamily}`;
+      ctx.fillText(text, 0, 0);
+      ele.appendChild(canvas);
+    }
+
+    var emailEles = document.querySelectorAll('.h-email');
+    if (emailEles.length) {
+      emailEles.forEach((ele) => renderCanvas(ele));
+    }
+  });
+  </script>
+</body>
+</html>
