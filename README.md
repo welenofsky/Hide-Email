@@ -12,4 +12,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
     HideEmails();
 });
 ```
-An example of how it is used is in the test.html file.
+An example of how it is used is in the example.html file.
