@@ -9,6 +9,7 @@
     .email-styles {
       font-size: 16px;
       font-family: arial;
+      color: blue;
     }
   </style>
 </head>
@@ -22,17 +23,24 @@
       let styles = getComputedStyle(ele);
       let fontFamily = styles.fontFamily;
       let fontSize = styles.fontSize;
+      let fontSizeInt = fontSize.match(/([0-9]+)/g).length ? parseInt(fontSize.match(/([0-9]+)/g)[0]) : 12;
       let canvas = document.createElement('canvas');
       let ctx = canvas.getContext('2d');
       let text = atob(ele.dataset.hea);
-      console.log(`${fontSize} ${fontFamily}`);
       ctx.font = `${fontSize} ${fontFamily}`;
       canvas.width = Math.ceil(ctx.measureText(text).width);
-      canvas.height = fontSize.match(/([0-9]+)/g)[0];
+      // 2 to prevent rendering issues
+      canvas.height = fontSizeInt + 2;
+      // Need to find a solution for hidipi screens
+      // canvas.style.width = Math.ceil(canvas.width / 2) + 'px';
+      // canvas.style.height = Math.ceil(canvas.height / 2) + 'px';
+      // ctx.scale(2,2); // Don't understand this one yet
       ctx.textBaseline = "hanging";
+      ctx.fillStyle = styles.color;
       ctx.font = `${fontSize} ${fontFamily}`;
       ctx.fillText(text, 0, 0);
       ele.appendChild(canvas);
+
     }
 
     var emailEles = document.querySelectorAll('.h-email');
